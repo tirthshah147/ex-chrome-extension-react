@@ -3,6 +3,7 @@
   "name":"TRIALEXT",
   "description":"React Chrome Extension",
   "version":"0.0.0.1",
+  "omnibox": { "keyword" : "t/" },
   "content_scripts":[
     {
       "matches":[
@@ -11,7 +12,12 @@
       "js":["content.js"]
     }
   ],
-  "permissions":["tabs"],
+  "externally_connectable": {
+    "ids": ["dpicoddoclmedbclhlpkdelgllagkgnk"],
+    "matches": ["http://127.0.0.1:5500/*"],
+    "accepts_tls_channel_id": false
+  },
+  "permissions":["tabs","storage","webNavigation"],
   "background":{
     "scripts":["background.js"]
   },

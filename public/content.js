@@ -7,3 +7,7 @@
 //     link:window.location.href
 // }
 // chrome.runtime.sendMessage(message);
+
+console.log("Tirth, your content script is running", window.location.href);
+
+

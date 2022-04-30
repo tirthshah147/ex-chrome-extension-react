@@ -110,9 +110,20 @@ import React,{useEffect, useState} from 'react'
 export default function App() {
 
   const [linkUrl, setlinkUrl] = useState("");
+  const [linkUrl2, setlinkUrl2] = useState("");
   const [count, setCount] = useState(0);
 
   useEffect(() => {
+    chrome.storage.sync.get("url", function (obj) {
+      setlinkUrl2(obj.url);
+  });
+    // chrome.storage.sync.get(['linkUser'], (data) => {
+    //   console.log(data);
+    // })
+
+    // localStorage['user'] = "tirth"
+    // console.log(localStorage['user']);
+
     let params = {
       active:true,
       currentWindow:true
@@ -124,6 +135,7 @@ export default function App() {
       let tabUrl = tabs[0].url;
       console.log(tabUrl);
       setlinkUrl(tabUrl);
+      
     }
   
   }, [])
@@ -132,6 +144,7 @@ export default function App() {
 
   return (
     <>
+      <div>{linkUrl2}</div>
       <div>{linkUrl}</div>
       <button onClick={() => setCount(count + 1)}>Change Count</button>
     </>
